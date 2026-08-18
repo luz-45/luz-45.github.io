@@ -32,6 +32,7 @@
     overflow: hidden;
   }
 
+  /* encabezado */
   .header{
     position: relative;
     background: var(--azul);
@@ -75,7 +76,7 @@
     display: none;
   }
 
-
+  /* contacto */
   .contact{
     padding: 20px 32px;
     background: var(--azul-claro);
@@ -85,7 +86,7 @@
   .contact p{ margin: 4px 0; }
   .contact b{ color: var(--azul); }
 
-
+  /* cuerpo */
   .body{ padding: 24px 32px 36px; }
 
   section{ margin-bottom: 26px; }
@@ -148,8 +149,8 @@
       <h1>Luz Gisella Servín Figueredo</h1>
       <div class="role">Estudiante de Licenciatura en Ciencias Informáticas</div>
       <div class="photo-slot" id="photoSlot">
-  <img id="photoImg" src="IMG_211452.jpg" alt="Foto de perfil" style="display:block;">
-</div>
+        <img id="photoImg" src="IMG_211452.jpg" alt="Foto de perfil" style="display:block;">
+      </div>
     </div>
 
     <div class="contact">
@@ -224,29 +225,22 @@
         </ul>
       </section>
 
+    </div>
 
-  <script>
-    const slot = document.getElementById('photoSlot');
-    const img = document.getElementById('photoImg');
-    const label = document.getElementById('photoLabel');
-    slot.title = 'Clic para subir tu foto';
-    slot.addEventListener('click', () => {
-      const input = document.createElement('input');
-      input.type = 'file';
-      input.accept = 'image/*';
-      input.onchange = (e) => {
-        const file = e.target.files[0];
-        if(!file) return;
-        const reader = new FileReader();
-        reader.onload = (ev) => {
-          img.src = ev.target.result;
-          img.style.display = 'block';
-          label.style.display = 'none';
-        };
-        reader.readAsDataURL(file);
-      };
-      input.click();
-    });
-  </script>
+    <footer>CV — Luz Gisella Servín Figueredo</footer>
+  </div>
+
 </body>
 </html>
+
+ 
+
+  
+    
+
+
+  
+ 
+  
+    
+      
