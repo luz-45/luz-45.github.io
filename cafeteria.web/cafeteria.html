@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Café Alma Libre</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #fdf6ec;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav {
+    background-color: #6f4e37;
+    padding: 10px;
+    text-align: center;
+  }
+  nav a {
+    color: white;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  header {
+    text-align: center;
+    padding: 30px 15px;
+  }
+  header h1 {
+    color: #6f4e37;
+  }
+
+  section {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 15px;
+  }
+  h2 {
+    color: #6f4e37;
+    border-bottom: 2px solid #6f4e37;
+    padding-bottom: 5px;
+  }
+
+  img {
+    width: 100%;
+    max-width: 600px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .producto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+  }
+  .producto button {
+    width: 25px;
+    height: 25px;
+    border: 1px solid #6f4e37;
+    background-color: white;
+    cursor: pointer;
+  }
+
+  .promo {
+    background-color: #6f4e37;
+    color: white;
+    padding: 15px;
+  }
+
+  .carrito {
+    border: 1px solid #ccc;
+    padding: 15px;
+  }
+  .carrito button {
+    background-color: #6f4e37;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  form input, form textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+  }
+  form button {
+    background-color: #6f4e37;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #666;
+  }
+</style>
+</head>
+<body>
+
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#menu-section">Menú</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+
+  <header id="inicio">
+    <h1>Café Alma Libre</h1>
+    <p>Un rincón cálido para tomar un buen café. Abierto todos los días de 8:00 a 20:00.</p>
+  </header>
+
+  <!-- NIVEL 3: imagen -->
+  <section>
+    <img src="foto-cafeteria.jpg" alt="Taza de café">
+  </section>
+
+  <!-- NIVEL 2: 5 productos con botones -->
+  <section id="menu-section">
+    <h2>Menú</h2>
+    <div id="menu">
+
+      <div class="producto" data-nombre="Espresso" data-precio="8000">
+        <span>Espresso - Gs. 8.000</span>
+        <div>
+          <button class="menos">-</button>
+          <span class="cantidad">0</span>
+          <button class="mas">+</button>
+        </div>
+      </div>
+
+      <div class="producto" data-nombre="Cappuccino" data-precio="12000">
+        <span>Cappuccino - Gs. 12.000</span>
+        <div>
+          <button class="menos">-</button>
+          <span class="cantidad">0</span>
+          <button class="mas">+</button>
+        </div>
+      </div>
+
+      <div class="producto" data-nombre="Latte de vainilla" data-precio="13000">
+        <span>Latte de vainilla - Gs. 13.000</span>
+        <div>
+          <button class="menos">-</button>
+          <span class="cantidad">0</span>
+          <button class="mas">+</button>
+        </div>
+      </div>
+
+      <div class="producto" data-nombre="Medialuna" data-precio="5000">
+        <span>Medialuna - Gs. 5.000</span>
+        <div>
+          <button class="menos">-</button>
+          <span class="cantidad">0</span>
+          <button class="mas">+</button>
+        </div>
+      </div>
+
+      <div class="producto" data-nombre="Tostado de jamón y queso" data-precio="16000">
+        <span>Tostado de jamón y queso - Gs. 16.000</span>
+        <div>
+          <button class="menos">-</button>
+          <span class="cantidad">0</span>
+          <button class="mas">+</button>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NIVEL 4: Promociones -->
+  <section>
+    <div class="promo">
+      <h2 style="color:white; border:none;">Promociones</h2>
+      <p>2x1 en espresso los lunes de 8:00 a 10:00.</p>
+      <p>Café + medialuna a Gs. 11.000 los días de semana.</p>
+      <p>10% de descuento para estudiantes.</p>
+    </div>
+  </section>
+
+  <!-- Carrito -->
+  <section>
+    <h2>Tu pedido</h2>
+    <div class="carrito">
+      <div id="listaCarrito">
+        <p id="vacio">Todavía no agregaste productos.</p>
+      </div>
+      <p><strong>Total: <span id="total">Gs. 0</span></strong></p>
+      <button id="finalizarBtn" disabled>Finalizar pedido</button>
+
+      <div id="formPago" style="display:none;">
+        <input type="text" id="nombreCliente" placeholder="Tu nombre">
+        <button id="confirmarBtn">Confirmar y pagar total</button>
+      </div>
+
+      <div id="ticket" style="display:none;">
+        <p id="ticketNombre"></p>
+        <p id="ticketTotal"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- NIVEL 5: formulario de contacto -->
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>Av. Mariscal Francisco Lopez, Villarrica | Tel: 0981 378 459</p>
+    <form>
+      <input type="text" placeholder="Tu nombre">
+      <input type="email" placeholder="Tu correo">
+      <textarea placeholder="Mensaje" rows="4"></textarea>
+      <button type="submit">Enviar mensaje</button>
+    </form>
+  </section>
+
+
+<script>
+  const cart = {};
+
+  document.querySelectorAll('.producto').forEach(item => {
+    const nombre = item.dataset.nombre;
+    const precio = parseInt(item.dataset.precio);
+    cart[nombre] = { precio: precio, cantidad: 0 };
+
+    const cantidadEl = item.querySelector('.cantidad');
+
+    item.querySelector('.mas').addEventListener('click', function () {
+      cart[nombre].cantidad++;
+      cantidadEl.textContent = cart[nombre].cantidad;
+      actualizarCarrito();
+    });
+
+    item.querySelector('.menos').addEventListener('click', function () {
+      if (cart[nombre].cantidad > 0) {
+        cart[nombre].cantidad--;
+        cantidadEl.textContent = cart[nombre].cantidad;
+        actualizarCarrito();
+      }
+    });
+  });
+
+  function actualizarCarrito() {
+    const lista = document.getElementById('listaCarrito');
+    lista.innerHTML = '';
+    let total = 0;
+    let hayProductos = false;
+
+    for (const nombre in cart) {
+      const cantidad = cart[nombre].cantidad;
+      if (cantidad > 0) {
+        hayProductos = true;
+        const subtotal = cantidad * cart[nombre].precio;
+        total += subtotal;
+        lista.innerHTML += '<p>' + cantidad + ' x ' + nombre + ' - Gs. ' + subtotal.toLocaleString('es-PY') + '</p>';
+      }
+    }
+
+    if (!hayProductos) {
+      lista.innerHTML = '<p id="vacio">Todavía no agregaste productos.</p>';
+    }
+
+    document.getElementById('total').textContent = 'Gs. ' + total.toLocaleString('es-PY');
+    document.getElementById('finalizarBtn').disabled = total === 0;
+  }
+
+  document.getElementById('finalizarBtn').addEventListener('click', function () {
+    document.getElementById('formPago').style.display = 'block';
+  });
+
+  document.getElementById('confirmarBtn').addEventListener('click', function () {
+    const nombre = document.getElementById('nombreCliente').value;
+    if (nombre === '') {
+      alert('Por favor escribí tu nombre');
+      return;
+    }
+    const total = document.getElementById('total').textContent;
+    document.getElementById('ticketNombre').textContent = 'Nombre: ' + nombre;
+    document.getElementById('ticketTotal').textContent = 'Total a pagar: ' + total;
+    document.getElementById('ticket').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
